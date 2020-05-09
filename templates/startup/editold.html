@@ -1,0 +1,223 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+
+
+
+
+<link rel="stylesheet" href="/static/editold.css">
+
+<script type="text/javascript">
+
+
+
+
+function isValidDate() {
+  var regEx = /^\d{4}-\d{2}-\d{2}$/;
+
+  var ten = /^[789]\d{9}$/;
+  var intCheck = /^[0-9]+$/;
+
+  var dateString = document.getElementById("inputDate4").value;
+
+  var total_fee = document.getElementById('inputTotFee').value;
+	var paid_fee = document.getElementById('inputGivenFee').value;
+	var remaining_fee = document.getElementById('inputPending').value;
+
+  if(!dateString.match(regEx))
+  {
+   alert("Please Enter Valid YYYY-MM-DD Format");
+   return false;  // Invalid format
+
+  }
+
+	
+	  if(!(total_fee.match(intCheck) && paid_fee.match(intCheck) && remaining_fee.match(intCheck)))
+	  {
+	
+		alert("Please Enter Valid Fee.");
+		return false; 
+	
+	
+	  }
+	
+
+    var AddingThem = Number(paid_fee) + Number(remaining_fee);
+
+    if( total_fee != AddingThem )
+    { 
+        
+
+      alert("Total Fee should be equal to Paid Fee and Pending Fee.");
+      return false;
+
+    }
+	
+	
+  
+}
+
+
+
+</script>
+
+
+
+
+
+
+    {% include 'messages.html' %}
+
+    {% block overrideninchild %}
+
+
+    {% endblock %}
+    <main>
+		  
+		  
+      <div class="container">
+
+
+        <div class="mx-auto text-center" >
+          <h4>You Could Update Patient's Newly Created Entry Here !</h4>
+       </div>
+       <br>
+            
+            
+        <div class="card">
+          <div class="card-header"><h5>Update Patient's Info Here</h5></div>
+          
+          <form class="container center_div" method="POST" action="{% url 'update_old' patient.id %}" onsubmit="return isValidDate();" >
+              
+            {% csrf_token %}
+             
+                  <div class="form-row">
+                    <div class="form-group col-md-3">
+                      
+                      <input type="name" class="form-control" id="inputName4" name="Fname" value="{{ patient.fname }}" placeholder="First Name"  required>
+                    </div>
+                   
+                  
+                  
+              <div class="form-group col-md-3">
+                                
+                <input type="text" value="{{ patient.date|date:'Y-m-d' }}" class="form-control"  id="inputDate4"  name="Date" placeholder="YYYY-MM-DD" required>
+
+              </div>
+
+            
+
+            
+
+            <div class="form-group col-md-2">
+                            
+              <input type="name" class="form-control" id="inputTotFee" name="TotFee"  placeholder="Total Fee" value="{{patient.total_fee}}" required >
+            </div>
+
+    
+            <div class="form-group col-md-2">
+              
+              <input type="name" class="form-control" id="inputGivenFee" name="GivenFee" placeholder="Paid Fee" value="{{patient.given_fee}}" required >
+            </div>
+    
+      
+          <div class="form-group col-md-2">
+            
+            <input type="name" class="form-control" id="inputPending" name="Pending" placeholder="Pending Fee" value="{{patient.remaining_fee}}" required >
+          </div>
+
+
+          <div class="form-group col-md-6">
+                      
+            <input type="text" class="form-control" id="Parme_dise" name="Parme_dise" value="{{patient.parmanent_disease}}" placeholder="Parmanent Disease" required >
+          </div>
+
+
+          <div class="form-group col-md-6">
+            
+            <input type="text" class="form-control" id="ipd" name="ipd" value="{{patient.ipd}}" placeholder="Ipd">
+          </div>
+
+
+   
+                       
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="inputCc4" name="Cc" placeholder="Chief Complaint" value="{{patient.cheapcomp}}" required>
+                    </div>
+      
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="inputHoa4" name="Aller" placeholder="History Of Allergy" value="{{patient.allergy}}" equired>
+                    </div>
+      
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="inputPd4" name="Pd" placeholder="Provisional Dignosis" value="{{patient.provisdigno}}" required >
+                    </div>
+      
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="inputTreat4" name="Treat" placeholder="Treatment (Tablet Names)" value="{{patient.treatment}}" required >
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="inputfdigno4" name="final_digno" placeholder="Final Dignosis" value="{{patient.final_digno}}" required >
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="inputBP4" name="blood_press" placeholder="Blood Pressure" value="{{patient.blood_press}}" required >
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="temp_add" name="temp_add" value="{{patient.temporary_add}}" placeholder="Temporary Address" required >
+                    </div>
+    
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="parme_add" name="parme_add" value="{{patient.parmanent_add}}" placeholder="Parmanent Address" required >
+                    </div>
+
+                    
+      
+                    <div class="form-group col-md-12">
+                      
+                      <input type="text" class="form-control" id="inputCn4" name="Cn"  placeholder="Clinical Notes" value="{{ patient.clinicalnotes }}"   required>
+                    </div>
+      
+      
+                  
+                  
+                    
+                      <div class="mx-auto text-center" >
+                          <button type="submit"  class="btn btn-primary">Update</button>
+                       </div>
+      
+                      
+                      
+                    
+                  
+                 
+      
+      
+      
+          </form>
+      
+      
+         
+          
+        </div>
+      </div>					
+            
+            
+            
+            
+          </main>
+        
+
+    
+{% endblock %}   

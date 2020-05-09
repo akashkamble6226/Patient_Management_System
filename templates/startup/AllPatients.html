@@ -1,0 +1,213 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+        {% block overrideninchild %}
+
+
+        {% endblock %}  
+<link rel="stylesheet" href="/static/AllPatients.css">
+
+    
+
+<br>
+
+<script type=text/javascript>
+var c = 0;
+function pop()
+{
+    if (c==0)
+    {
+        document.getElementById('block').style.display = "block";
+        c = 1;
+
+    }
+    else
+    {
+
+        document.getElementById('block').style.display = "none";
+        c = 0;
+
+    }
+
+}
+
+</script>
+    
+        
+
+
+        
+
+
+
+        
+
+
+       
+
+            
+
+
+
+       
+<a name="top"></a>  
+
+<div class="mx-auto text-center" >
+    <h4>You've Following Patients Available</h4>
+ </div>
+
+
+
+
+
+
+
+ <br>
+
+
+ <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header mx-auto text-center">Total Patients Are</div>
+    <div class="card-body mx-auto text-center">
+      <h1>{{Total_patients}}</h1>
+    </div>
+  </div>
+
+  <br>
+
+
+  
+
+        <div class="table-responsive">
+            <table class="table table table-bordered table-hover" >
+
+            <thead class="table table-secondary table-bordered" >
+
+                <tr>
+
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Date</th>
+                    <th>Mo.No</th>
+                    <th>Age</th>
+                    <th>Cheap Complaint</th>
+                   
+                    <th>Allergy</th>
+                    <th>Provisional Dignosis</th>
+                    <th>Treatment</th>
+                    <th>Clinical Notes</th>
+                    <th>Actions</th>
+                    
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for p in patient %}
+
+
+                
+                  
+                  <tr>
+    
+                
+                       
+
+                       
+                                <td>{{ p.fname }}</td> 
+                                <td>{{ p.gender }}</td> 
+                                <td>{{ p.date|date:'Y-m-d'}}</td> 
+                                <td>{{ p.mo_no }}</td> 
+                                <td>{{p.age}}</td>
+                                <td>{{ p.cheapcomp }}</td> 
+                               
+                                <td>{{ p.allergy }}</td> 
+                                <td>{{ p.provisdigno }}</td> 
+                                <td>{{ p.treatment }}</td>
+                                <td>{{ p.clinicalnotes }}</td> 
+                                <td > 
+                                    
+                                  <div class="act">
+
+                                    
+                                    
+                                        <a href="{% url 'edit_patient' p.id %}" class="btn btn-primary " role="button" id="edt" title="Edit"> <span class="glyphicon glyphicon-pencil"></span></a>
+                                      
+                                      
+                                        <a href="{% url 'Print_for_all' p.id %}" class="btn btn-success " role="button" id="prt" title="Print"><span class="glyphicon glyphicon-print"></span></a>
+                                      
+                                      
+                                        <a onclick="pop()" class="btn btn-danger " style="color: #fff;" role="button" id="del" title="Delete"><span class="glyphicon glyphicon-remove"></span></a>
+                                        
+                                        <a href="{% url 'All_detail' p.id %}" class="btn btn-info " role="button" id="info" title="All_info" ><span class="glyphicon glyphicon-info-sign"></span></a>
+
+                                        
+
+                                    </div>
+                                </td>
+
+                                
+
+
+                                  <div class="card text-white bg-light mb-3 " id="block" style="max-width: 40rem; display:none;">
+                                    
+                                    <div class="card-body mx-auto text-center" >
+                                        <h5 class="card-title " style="color: black;">Are you sure you wanna delete patient ?</h5>
+                                      
+                                        <a href= "{% url 'delete_patient' p.id %} " class="btn btn-danger">Delete Patient</a>
+                                        <a onclick="pop()" class="btn btn-primary " >Cancel</a>
+                                    </div>
+                                
+
+
+                                
+
+
+
+
+
+
+
+
+
+
+
+                                
+                        
+
+                
+                
+                </tr>
+                {% endfor %}
+
+                
+
+                
+
+            <tbody>
+        
+            </table>
+        </div>
+
+       
+            
+
+            
+
+
+
+                
+           
+
+	
+		
+
+    
+<br>
+<div class="mx-auto text-right"   >
+    <a href="#top"  class="btn btn-warning" style=" text-decoration: none;  margin:10px; ">Back to top</a>
+</div>
+{% endblock %}   

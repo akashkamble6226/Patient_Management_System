@@ -1,0 +1,232 @@
+{% extends "Base.html" %}
+
+
+
+{% block content %}
+
+
+<script type="text/javascript">
+
+	function check()
+	{
+	  
+	
+    var intCheck = /^[0-9]+$/;
+	
+	  var total_fee = document.getElementById('inputTotFee').value;
+	  var paid_fee = document.getElementById('inputGivenFee').value;
+	  var remaining_fee = document.getElementById('inputPending').value;
+	
+	 
+	
+	  
+	 
+	
+	  if(!(total_fee.match(intCheck) && paid_fee.match(intCheck) && remaining_fee.match(intCheck)))
+	  {
+	
+		alert("Please Enter Valid Cost.");
+		return false; 
+	
+	
+	  }
+
+
+    var AddingThem = Number(paid_fee) + Number(remaining_fee);
+
+    
+
+    if( total_fee != AddingThem )
+    { 
+        
+
+      alert("Total Fee should be equal to Paid Fee and Pending Fee.");
+      return false;
+
+    }
+	
+	}
+	
+	
+	 
+	
+	
+	
+	
+	</script>
+	
+
+
+  
+
+  <link rel="stylesheet" href="/static/Old_Patient.css">
+  {% include 'messages.html' %}
+
+  {% block overrideninchild %}
+
+
+  {% endblock %}
+
+
+
+  <main>
+		  
+		  
+    <div class="container">
+      <div class="mx-auto text-center" >
+        <h4>You Could Add Old Patient's Record , If Exist !</h4>
+     </div>
+         <br>
+     <div class="card">
+       <div class="card-header">Add New Entry For Existing Patient Here</div>
+       <form class="container center_div" id="newPatient" method="POST"  action="{% url 'InsertRow'%}" onsubmit="return check();"    >
+           
+         {% csrf_token %}
+
+               <div class="form-row">
+                 <div class="form-group col-md-3">
+                   
+                   <input type="name" class="form-control" id="inputName4" name="Fname" value="{{ patient.fname }}" placeholder="Full Name" required>
+                 </div>
+   
+                 
+   
+                 <div class="form-group col-md-3" >
+                   
+                   <input type="date" class="form-control" id="inputDate4"  name="Date"  placeholder="YYYY-MM-DD"  required >
+                   
+                 </div>
+
+
+                 
+
+                 
+   
+                 
+
+                 
+                 <div class="form-group col-md-2">
+                     
+                   <input type="name" class="form-control" id="inputTotFee" name="TotFee"  placeholder="Total Fee" required >
+                 </div>
+
+                 
+                   <div class="form-group col-md-2">
+                     
+                     <input type="name" class="form-control" id="inputGivenFee" name="GivenFee" placeholder="Paid Fee" required >
+                   </div>
+                 
+                   
+                     <div class="form-group col-md-2">
+                       
+                       <input type="name" class="form-control" id="inputPending" name="Pending" placeholder="Pending Fee" required >
+                     </div>
+
+                     <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="Parme_dise" name="Parme_dise" placeholder="Parmanent Disease" required >
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="ipd" name="ipd" placeholder="Ipd">
+                    </div>
+
+                     <div class="form-group col-md-4">
+                              
+                      <input type="digit" class="form-control" id="inputAge4" name="age"  maxlength="3" placeholder="Age" value="{{patient.age}}"  >
+                    </div>
+
+
+                  <div class="form-group col-md-4">
+                   <input type="text" class="form-control" id="inputCc4" name="Cc" placeholder="Chief Complaint"   required>
+                 </div>
+   
+                 <div class="form-group col-md-4">
+                   
+                   <input type="text" class="form-control" id="inputHoa4" name="Aller"  placeholder="History Of Allergy" required>
+                 </div>
+   
+                 <div class="form-group col-md-6">
+                   
+                   <input type="text" class="form-control" id="inputPd4" name="Pd"   placeholder="Provisional Dignosis" required >
+                 </div>
+   
+                 <div class="form-group col-md-6">
+                   
+                   <input type="text" class="form-control" id="inputTreat4" name="Treat"  placeholder="Treatment (Tablet Names)" required >
+                 </div>
+
+
+                 
+
+
+                 <div class="form-group col-md-6">
+                      
+                  <input type="text" class="form-control" id="inputfdigno4" name="final_digno" placeholder="Final Dignosis" value="{{patient.final_digno}}" required >
+                </div>
+
+                <div class="form-group col-md-6">
+                  
+                  <input type="text" class="form-control" id="inputBP4" name="blood_press" placeholder="Blood Pressure" value="{{patient.blood_press}}" required >
+                </div>
+
+                <div class="form-group col-md-6">
+                      
+                  <input type="text" class="form-control" id="temp_add" name="temp_add" placeholder="Temporary Address" required >
+                </div>
+
+                <div class="form-group col-md-6">
+                  
+                  <input type="text" class="form-control" id="parme_add" name="parme_add" placeholder="Parmanent Address" required >
+                </div>
+
+                 
+   
+                 <div class="form-group col-md-12">
+                   
+                   <input type="text" class="form-control" id="inputCn4" name="Cn"   placeholder="Clinical Notes" required >
+                 </div>
+  
+   
+               
+               
+                 
+                   <div class="mx-auto text-center"   >
+                       <button type="submit" id="one" class="btn btn-primary" >Add New Record & Print</button>
+                    </div>
+                    
+
+
+                   
+                   
+                 
+               
+              
+   
+   
+   
+       </form>
+
+
+
+       
+     
+
+       
+      
+       
+     </div>
+
+    
+   </div>					
+         
+         
+         
+         
+       </main>
+     
+
+ 
+{% endblock %}   

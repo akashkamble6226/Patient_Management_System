@@ -1,0 +1,44 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background:linear-gradient(to right,#9c27b0,#8ecdff); */
+
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f1f1;
+    position: relative;
+    padding-bottom: 58px;
+    min-height: 100vh;
+    
+  }
+
+
+
+
+.Ccard 
+{
+    
+  
+    margin-left:30%;
+    margin-top: 50px;
+    margin-right: 10%;
+
+
+
+}
+
+#pr
+{
+    display: block;
+    margin: 0 auto;
+    
+    width: fit-content;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 150px;
+}
+

@@ -1,0 +1,99 @@
+
+
+
+
+
+
+
+
+
+/* form starts onwords */
+
+
+
+
+
+.table {
+   margin: auto;
+   width: 80% !important; 
+}
+
+table th {
+   text-align: center; 
+}
+
+
+
+
+.table-fit {
+    width: 1px;
+}
+
+form .B1
+{
+    margin-left:200px;
+    align-items:center;
+    width: 10% !important; 
+    
+}
+
+form .B2
+{
+    margin-left:50px;
+    align-items:center;
+    width: 10% !important; 
+}
+form .B3
+{
+    margin-left:50px;
+    align-items:center;
+    width: 10% !important; 
+}
+
+
+.AllButtons
+{
+    text-align:center;
+    margin-top:80px;
+}
+
+.Button
+{
+
+    position:absolute;
+    /* top:60%; */
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    margin-top:22%;
+    margin-bottom:0%;
+
+}
+
+/* for alert or message */
+
+h3
+{
+   
+   
+    text-align: center;
+    
+    
+
+}
+
+.act
+{
+    margin-left: 10px;
+    
+    float:center;
+
+}
+
+#edt,#prt,#del
+{
+   
+    
+    margin-bottom: 5px;
+    
+}

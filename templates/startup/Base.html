@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+
+<title>Doctor's Home</title>
+<link rel="stylesheet" type="text/css" href="/static/Base.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+  
+  
+
+
+</head>
+<body>
+    <header>
+
+			<div class="Logo">
+			
+			
+			<i class="fa fa-user-md" style="font-size:30px;color:#a3a3a3;float:right;line-height:50px;margin-right:10px;"></i>
+			
+			<h5 style="color: #a3a3a3; line-height: 29px; margin-right: 5px;">Dr . Pramod Navle </h5>
+			
+			|
+			
+			{% if user.is_authenticated %}
+			<a href="/Logout" style="margin-left:10px;text-decoration:none;color:#FFF; font-size: 14px;">Sign Out </a>
+			
+			{% else %}
+			<a href="/login" style="margin-left:10px;text-decoration:none;color:#FFF; font-size: 14px;">Sign In </a>
+			
+			{% endif %}
+			
+			
+			</div>
+			
+			<nav>
+			
+				<ul>
+				
+					
+					<li><a href="newform">Add New Patient</a></li>
+					<li><a href="OldPatient">Add Old patient</a></li>
+					<li><a href="AllPatients">View Patients</a></li>
+					
+					
+				</ul>
+			
+			</nav>
+			
+		
+
+		</header>
+        
+        
+        {% block content %}
+
+
+        {% endblock %}
+
+
+        <footer>
+        Developed By : Akash Kamble
+        </footer>
+
+    </body>
+
+</html>

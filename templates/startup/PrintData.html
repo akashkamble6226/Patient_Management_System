@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printing</title>
+
+    <link rel="stylesheet" href="/static/PrintData.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.print();
+            setTimeout("closePrintView()", 1000);
+        });
+        function closePrintView() {
+            document.location.href = 'AllPatients';
+        }
+    </script>
+</head>
+<body>
+
+    
+        
+        
+        
+        
+        
+        
+
+   
+
+    
+{% for p in patient %}
+
+<div id="printableArea">
+<div class="card Ccard" style="width: 40%; height: 450px; margin-top: 20px; margin-bottom: 10px;">
+    <h5 class="card-header text-center" style="font-size: 20px; "><strong>Shree Sai Clinic,Dorlewadi</strong></h5>
+    <div class="container">
+        <div class="row" >
+            <div class="col-md-4" >
+                
+                    <h6 style=" text-align:left; font-size: 18px; margin-top: 10px;" >Dr.Pramod Navle<br> B.H.M.S<br>Reg.No. 38047<br>Mo : 9881662715</h6>
+                
+            </div>
+
+            
+
+            <div class="col-md-4" >
+                 
+                    <h6 style="text-align: left; font-size: 18px; margin-top: 10px;">Dr.Mrs.Gauri navle<br> B.H.M.S<br>Reg.No. 44235</h6>
+              
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h6 style="text-align: right; margin-right: 10px; font-size: 18px;">Date : {{p.date|date:'Y-m-d'}}</h6>
+    <div class="card-body">
+       
+      <h6 style="font-size: 18px;">Name : {{p.fname}}</h6>
+      <h6 style="font-size: 18px;">Age : {{p.age}}</h6>
+      <h6 style="font-size: 18px;">Treatment : {{p.treatment}}</h6>
+      <h6 style="font-size: 18px;">Final Dignosis : {{p.final_digno}}</h6>
+      <h6 style="font-size: 18px;">Blood Pressure : {{p.blood_press}}</h6>
+
+
+      
+    </div>
+  </div>
+</div>
+
+     
+
+{% endfor %}  
+
+
+
+
+</body>
+</html>

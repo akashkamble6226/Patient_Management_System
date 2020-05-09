@@ -1,0 +1,140 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+        {% block overrideninchild %}
+
+
+        {% endblock %}  
+<link rel="stylesheet" href="/static/Every_Detail.css">
+
+    
+<a name="top"></a> 
+<br>
+
+        <div class="table-responsive">
+            <div class="mx-auto text-center"   >
+             <h4>History Of Patient</h4>
+             <h3>{{ Fname}}</h3>
+            </div>
+            
+            <table class="table table table-bordered table-hover" >
+               
+            <thead class="table table-secondary table-bordered" >
+                
+                <tr>
+
+                    
+                    
+                    <th>Date</th>
+                    
+                    <th>Temporary_Address</th>
+                    <th>Parmanent_Address</th>
+                    <th>Ipd (Notes)</th>
+                    <th>Parmanent_Disease</th>
+                    
+                    <th>Total_Fee</th>
+                    <th>Paid_Fee</th>
+                    <th>Pending_Fee</th>
+
+
+                    <th>Actions</th>
+                    
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for p in patient %}
+                  <tr>
+    
+                
+                       
+
+                       
+                                <td>{{ p.date|date:'Y-m-d'  }}</td> 
+                                
+
+                                <td>{{ p.temporary_add }}
+
+                                <td>{{ p.parmanent_add }}
+                                <td>{{ p.ipd }}
+                                <td>{{ p.parmanent_disease }}
+                                
+                                <td>{{ p.total_fee }}</td> 
+                                <td>{{ p.given_fee }}</td>
+                                <td>{{ p.remaining_fee }}</td> 
+                                <td>
+                                
+                                    
+                                  <div class="act">
+                                    
+                                       <a href="{% url 'edit_oldpatient' p.id %}" class="btn btn-primary " role="button" id="edt" title="Edit"> <span class="glyphicon glyphicon-pencil"></span></a>
+                                      
+                                      
+                                        <a href="{% url 'Print_for_all_2' p.id %}" class="btn btn-success " role="button" id="prt" title="Print"><span class="glyphicon glyphicon-print"></span></a>
+                                      
+                                      
+                                        
+                                        
+                                        <!-- <a href="{% url 'All_detail' p.id %}" class="btn btn-info " role="button" id="info" title="All_info"><span class="glyphicon glyphicon-info-sign"></span></a> -->
+
+                                        
+
+                                    </div>
+                                </td>
+                                
+
+
+                                
+
+
+
+
+
+
+
+
+
+
+
+                                
+                        
+
+                
+                
+                </tr>
+                {% endfor %}
+
+                
+
+                
+
+            <tbody>
+        
+            </table>
+        </div>
+
+       
+            
+
+            
+
+
+
+                
+           
+
+	
+		
+
+    
+<br>
+
+<div class="mx-auto text-right"   >
+    <a href="#top"  class="btn btn-warning" style=" text-decoration: none;  margin:10px; ">Back to top</a>
+</div>
+{% endblock %}   
