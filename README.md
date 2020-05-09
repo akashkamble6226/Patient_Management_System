@@ -1,4 +1,4 @@
-# Patient_Management_System
+# Patient_Management_System(In Django Framework)
 
 starup is my app
 
